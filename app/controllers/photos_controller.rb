@@ -1,5 +1,6 @@
 class PhotosController < ApplicationController
 
+before_action :find_album, only: [:show, :edit, :update, :destroy]
 before_action :find_photo, only: [:show, :edit, :update, :destroy]
 
 
@@ -62,7 +63,9 @@ before_action :find_photo, only: [:show, :edit, :update, :destroy]
 		params.require(:photo).permit(:title, :description, :avatar, :body, :album_id)
 	end
 
-	
+	def find_album
+		@album = Album.find(params[:album_id])
+	end
 
 	def find_photo
 		@photo = Photo.find(params[:id])
