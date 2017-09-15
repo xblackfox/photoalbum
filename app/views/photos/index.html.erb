@@ -1,7 +1,19 @@
-<h1>All Photos</h1>
-<% @photos.each do |photo| %>
+<h1>Photo Gallery</h1>
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+		<% @photos.each do |photo| %>
+			<div>
+				<h3> <%= photo.title %> </h3>
+				<p> <%= photo.description %></p>
+				<%= link_to(image_tag(photo.avatar.thumb.url, alt:'Photo'), photo.avatar.url, target: '_blank') if photo.avatar? %>
+			</div>
+		<% end %>
+		</div>
+	</div>
+
+</div>
 
 
-	 <%= image_tag(photo.avatar_url) %>
-	
-<% end %>
+
