@@ -8,6 +8,8 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
+
+
   <body>
 <!-- navbar start --> 
    <div class="nav navbar navbar-inverse">
@@ -42,9 +44,12 @@
   	 <% end %>
 <!-- flash end --> 
 
+    <div class="container">
 <!-- yield start --> 
     <%= yield %>
 <!-- yield start --> 
+    </div>
 
   </body>
+
 </html>
