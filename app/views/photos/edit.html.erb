@@ -11,7 +11,39 @@
 					<%= image_tag @photo.avatar.url %>
 			</div>
 
-				<%= render 'form' %>
+			<!-- form start -->	
+				<%= simple_form_for @photo, html: {multipart: true}, url: album_photo_path do |f|  %>
+					<% if @photo.errors.any? %>
+						<div id="errors">
+							<h2> <%= pluralize(@photo.errors.count, "error") %> prevented this Photo from saving </h2>
+							<ul> <% @photo.errors.full_messages.each do |msg| %>
+								<li> <%= msg %></li>
+								<% end %>
+							</ul>
+						</div>
+					<% end %>
+
+
+
+					<%= f.input :title, input_html: {class:'form-control' }  %>
+					<%= f.input :description, input_html: {class:'form-control' }  %>
+
+
+				<!-- START carrierwave photo upload via remote URL-->
+				  <p>
+				    <!--label>Photo URL:</label-->
+				    <!--%= image_tag(@photo.avatar_url) if @photo.avatar? %-->
+				    <!--%= f.text_field :remote_avatar_url %-->
+						<%= f.file_field :avatar %>
+				  </p>
+				<!-- START carrierwave photo upload via remote URL-->
+
+
+					<%= f.button :submit, class: "btn btn-info" %>
+
+				<% end %>
+			<!-- form end -->	
+
 
 				<%= link_to "Cancel", album_photo_path(:album_id) %> 
 			</div>

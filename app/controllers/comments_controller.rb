@@ -2,7 +2,7 @@ class CommentsController < ApplicationController
 
 	def create
 		@album = Album.find(params[:album_id])
-		@photo = Photo.find(params[:photo_id])
+		@photo = @album.photos.find(params[:photo_id])
 
 		@comment = Comment.new(comment_params)
 		@photo.comments.create(comment_params)
