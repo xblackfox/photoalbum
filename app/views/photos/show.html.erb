@@ -21,3 +21,19 @@
 			</button>
 			<% end %>
 		<% end %>
+
+
+
+<div class="row">
+	<div class="col-md-12">
+		 <div class="reviews">
+		 	<h1>Comments</h1>
+		 		<div>
+		 			<%= link_to "Click to add Comment", new_album_photo_comment_path(@album, @photo), class: "btn btn-default" %>
+		 		</div>
+
+		 		<%= render @photo.comments %>
+		 		
+		 </div>
+	</div>
+</div>

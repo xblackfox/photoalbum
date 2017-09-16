@@ -32,7 +32,7 @@ before_action :find_photo, only: [:show, :edit, :update, :destroy]
 
 	def update
 		if @photo.update(photo_params)
-			redirect_to album_path(@album), notice: "Succesfully updated."
+			redirect_to album_photo_path(@album, @photo), notice: "Succesfully updated."
 		else
 			
 			render 'edit'
