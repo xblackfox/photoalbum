@@ -1,35 +1,23 @@
 <h1> <%= @photo.title %> </h1>
 
-<%= link_to(image_tag(@photo.avatar.thumb.url, alt: 'Image'), @photo.avatar.url, target: '_blank') if @photo.avatar? %>
+<p><%= image_tag(@photo.avatar.thumb.url, alt: 'Image', class: "photo-show") if @photo.avatar? %></p>
 <p> <%= @photo.description %></p>
 
+<br><br>
 
-
-
-<br>
-<br>
-
-
-
-
-
-
-
-
-
-
-	<div class="col-md-12">
 		<button type="button" class="btn btn-info ">
 			<%= link_to "Back", root_path %>
 		</button>
-		<button type="button" class="btn btn-warning">
-			<%= link_to "Edit", edit_album_photo_path(album_id: @album.id, id: @photo.id) %>
-		</button>
-		<button type="button" class="btn btn-info">
-			<%= link_to "Delete", album_photo_path(album_id: @album.id, id: @photo.id), method: :delete,
-			data: {confirm: "Are you sure?"}%>
-		</button>
 
 
-		<br>
-	</div>
+		<% if user_signed_in? %> 
+			<% if @album.user_id == current_user.id %> 
+			<button type="button" class="btn btn-warning">
+				<%= link_to "Edit", edit_album_photo_path(album_id: @album.id, id: @photo.id) %>
+			</button>
+			<button type="button" class="btn btn-info">
+				<%= link_to "Delete", album_photo_path(album_id: @album.id, id: @photo.id), method: :delete,
+				data: {confirm: "Are you sure?"}%>
+			</button>
+			<% end %>
+		<% end %>

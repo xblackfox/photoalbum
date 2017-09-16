@@ -20,14 +20,13 @@
 
       <td><%= link_to 'Show', album_path(album), class: 'btn btn-success btn-xs' %></td>
 
-
-      <td><%= link_to 'Edit', edit_album_path(album), class: 'btn btn-info btn-xs' %></td>
-
-
-      <td><%= link_to 'Destroy', album_path(album),
-      class: 'btn btn-danger btn-xs',
-              method: :delete,
-              data: { confirm: 'Sure you wanna destroy?'} %> </td>
+  <% if user_signed_in? %>  
+        <td><%= link_to 'Edit', edit_album_path(album), class: 'btn btn-info btn-xs' %></td>
+        <td><%= link_to 'Destroy', album_path(album),
+        class: 'btn btn-danger btn-xs',
+                method: :delete,
+                data: { confirm: 'Sure you wanna destroy?'} %> </td>
+  <% end %>
     </tr>
   <% end %>
   </tbody>
@@ -35,8 +34,12 @@
 </table>
 
 <br>
-<%= link_to new_album_path, class: 'btn btn-warning' do %>
- <i class="glyphicon glyphicon-plus"></i> New Album
+  <% if user_signed_in? %> 
+      <%= link_to new_album_path, class: 'btn btn-warning' do %>
+       <i class="glyphicon glyphicon-plus"></i> New Album
+    <% end %>
+
+
 <% end %>
 
 

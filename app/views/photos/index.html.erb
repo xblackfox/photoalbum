@@ -1,19 +1,13 @@
-<h1>Photo Gallery</h1>
-
-<div class="container">
+<h1> Photo Gallery</h1>
 	<div class="row">
-		<div class="col-md-12">
 		<% @photos.each do |photo| %>
-			<div>
-				<h3> <%= photo.title %> </h3>
-				<p> <%= photo.description %></p>
-				<%= link_to(image_tag(photo.avatar.thumb.url, alt:'Photo'), photo.avatar.url, target: '_blank') if photo.avatar? %>
+			<div class="col-md-4 col-sm-6">
+				<%= link_to image_tag(photo.avatar.thumb.url, alt:'Photo', class: "photo"), album_photo_path(album_id: @album.id, id: photo.id) if photo.avatar? %>
 			</div>
-		<% end %>
-		</div>
-	</div>
+		<% end %>	
+	</div>	
+		
 
-</div>
 
 
 
