@@ -1,3 +1,68 @@
+<div class="col-md-10 col-md-offset-1">
+	<div class="table-responsive">
+	  <table class="table table table-hover">
+
+		<h1><%= @album.title %></h1>
+
+		    <thead>
+		      <tr>
+		      	<th>Album Title</th>
+		        <th>Album Description</th>
+		        <th>Created Date</th>
+		      </tr>
+		    </thead>
 
 
-<li><%= link_to "Add a new photo", new_album_photo_path(@album) %></li>
+	
+
+		    <tbody>
+		      <tr>
+		      	<td><%= @album.title %></td>
+		        <td><%= @album.description %></td>
+		        <td><%= @album.created_at.strftime("%d %b %Y %A, %I:%S %p") %></td>
+		        <td> <button type="button" class="btn btn-info ">
+					<%= link_to "View Photos", album_photos_path(@album.id) %> </button>
+		        </td>
+		      </tr>
+		    </tbody>
+	  </table>
+	</div>
+	<br>
+	<br>
+
+
+
+<div class="col-md-12">
+		<button type="button" class="btn btn-info ">
+			<%= link_to "Back", root_path %> 
+		</button>
+	<% if user_signed_in? %> 
+		<% if @album.user_id == current_user.id %> 
+		<button type="button" class="btn btn-warning ">
+			<%= link_to "Add New Photo", new_album_photo_path(@album) %>
+		</button>
+		
+		<button type="button" class="btn btn-info">
+			<%= link_to "Edit", edit_album_path(album_id: @album.id) %>
+		</button>
+		<button type="button" class="btn btn-info">
+			<%= link_to "Delete", album_path(:album_id), method: :delete,
+  				data: {confirm: "Delete this Album?"}%>
+		</button>
+		<% end %>
+	<% end %>
+		<br>
+</div>
+
+
+
+
+	
+</div>
+
+
+
+
+
+
+

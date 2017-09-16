@@ -1,11 +1,11 @@
-<h1>List of all Album Records</h1>
+<h1>List of all Albums</h1>
  
 <table class="table table-hover">
   
   <thead>
   <tr>
     <th>Title</th>
-    <th>Description</th>
+    <th>Creator</th>
     <th>Time Created</th>
   </tr>
   </thbook
@@ -15,19 +15,10 @@
   <% @albums.each do |album| %>
     <tr>
       <td><%= album.title %></td>
-      <td><%= album.description %></td>
+      <td><%= album.user.email %></td>
       <td><%= album.created_at.strftime("%d-%b-%Y, %l:%M%P") %></td>
 
-      <td><%= link_to 'Show', album_path(album), class: 'btn btn-success btn-xs' %></td>
-
-
-      <td><%= link_to 'Edit', edit_album_path(album), class: 'btn btn-info btn-xs' %></td>
-
-
-      <td><%= link_to 'Destroy', album_path(album),
-      class: 'btn btn-danger btn-xs',
-              method: :delete,
-              data: { confirm: 'Sure you wanna destroy?'} %> </td>
+      <td><%= link_to 'View Album', album_path(album), class: 'btn btn-success btn-xs' %></td>
     </tr>
   <% end %>
   </tbody>
@@ -35,8 +26,12 @@
 </table>
 
 <br>
-<%= link_to new_album_path, class: 'btn btn-warning' do %>
- <i class="glyphicon glyphicon-plus"></i> New Album
+  <% if user_signed_in? %> 
+      <%= link_to new_album_path, class: 'btn btn-warning' do %>
+       <i class="glyphicon glyphicon-plus"></i> New Album
+    <% end %>
+
+
 <% end %>
 
 
