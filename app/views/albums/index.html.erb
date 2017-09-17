@@ -17,6 +17,7 @@
       <td><%= album.title %></td>
       <td><%= album.user.email %></td>
       <td><%= album.created_at.strftime("%d-%b-%Y, %l:%M%P") %></td>
+      <td><%= image_tag(album.avatar.small_thumb.url, alt: 'Image') if album.avatar? %></td>
 
       <td><%= link_to 'View Album', album_path(album), class: 'btn btn-success btn-xs' %></td>
     </tr>

@@ -10,7 +10,7 @@ class CommentsController < ApplicationController
 	def create
 		@comment = Comment.new(comment_params)
 		@comment.photo_id = @photo.id
-		@comment.user_id = current_user.id
+		@comment.user_id = current_user.id 
 
 		if @comment.save
 			redirect_to album_photo_path(@album, @photo)

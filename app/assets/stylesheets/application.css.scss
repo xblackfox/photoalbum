@@ -14,6 +14,53 @@
  *= require_self
  */
 
+@import url(https://fonts.googleapis.com/css?family=Lato); 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+@mixin background-tile {
+	box-sizing: border-box;
+	background-color: #fff;
+	border-radius: 5px;
+	box-shadow: 1px 1px 3px 4px #ccc;
+	padding: 0.6em 0.6em;
+}
+
+
+	.comment {
+		border-bottom: 1px solid gainsboro;
+		margin-bottom: 15px;
+		padding-bottom: 10px;
+		}
+
+	.comment-2 {
+			font-size: 1.05em;
+			line-height: 1.5;
+			}
+
+
+/* General styles */
+
+body {
+	background: -webkit-linear-gradient(40deg, #d1edf0 10%, #ecc8c6 100%);
+  background:    -moz-linear-gradient(40deg, #d1edf0 10%, #ecc8c6 100%);
+  background:     -ms-linear-gradient(40deg, #d1edf0 10%, #ecc8c6 100%);
+  background:      -o-linear-gradient(40deg, #d1edf0 10%, #ecc8c6 100%);
+  background:         linear-gradient(40deg, #d1edf0 10%, #ecc8c6 100%);
+	font-family: 'Lato', sans-serif;
+}
+
+.navbar-brand {
+			color: #A77DC2;
+			letter-spacing: 1.4px;
+			text-transform: uppercase;
+			font-size: 2.3em;
+			font-weight: bold;
+		}
+
+.photo {
+		margin-bottom: 40px;
+		@include background-tile;
+	}
+
 

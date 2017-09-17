@@ -20,19 +20,23 @@
 		      	<td><%= @album.title %></td>
 		        <td><%= @album.description %></td>
 		        <td><%= @album.created_at.strftime("%d %b %Y %A, %I:%S %p") %></td>
+
 		        <td> <button type="button" class="btn btn-info ">
 					<%= link_to "View Photos", album_photos_path(@album.id) %> </button>
 		        </td>
+
+		      </tr>
+		      <tr> 
+		      <td><%= image_tag(@album.avatar.thumb.url, alt: 'Image', class: "photo") if @album.avatar? %></td>
+		      	
 		      </tr>
 		    </tbody>
 	  </table>
 	</div>
-	<br>
-	<br>
 
 
 
-<div class="col-md-12">
+
 		<button type="button" class="btn btn-info ">
 			<%= link_to "Back", root_path %> 
 		</button>
@@ -42,23 +46,23 @@
 			<%= link_to "Add New Photo", new_album_photo_path(@album) %>
 		</button>
 		
-		<button type="button" class="btn btn-info">
+		<button type="button" class="btn btn-warning">
 			<%= link_to "Edit", edit_album_path(album_id: @album.id) %>
 		</button>
-		<button type="button" class="btn btn-info">
+		<button type="button" class="btn btn-warning">
 			<%= link_to "Delete", album_path(:album_id), method: :delete,
   				data: {confirm: "Delete this Album?"}%>
 		</button>
 		<% end %>
 	<% end %>
 		<br>
-</div>
-
-
 
 
 	
+	
 </div>
+
+
 
 
 

@@ -1,6 +1,6 @@
-<div class="comments">
-	<p><%= comment.user.email %></p>
-	<p><%= comment.body %></p>
+<div class="comment">
+	<h3> <em>Commented by: <%= comment.user.email %> </em></h3>
+	<p class="comment-2"><%= comment.body %></p>
 
 	<% if user_signed_in? %>
 		<% if comment.user_id == current_user.id %>

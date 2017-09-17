@@ -1,6 +1,6 @@
 <h1> <%= @photo.title %> </h1>
 
-<p><%= image_tag(@photo.avatar.thumb.url, alt: 'Image', class: "photo-show") if @photo.avatar? %></p>
+<p><%= image_tag(@photo.avatar.thumb.url, alt: 'Image', class: "photo") if @photo.avatar? %></p>
 <p> <%= @photo.description %></p>
 
 <br><br>
@@ -15,25 +15,23 @@
 			<button type="button" class="btn btn-warning">
 				<%= link_to "Edit", edit_album_photo_path(album_id: @album.id, id: @photo.id) %>
 			</button>
-			<button type="button" class="btn btn-info">
+			<button type="button" class="btn btn-warning">
 				<%= link_to "Delete", album_photo_path(album_id: @album.id, id: @photo.id), method: :delete,
 				data: {confirm: "Are you sure?"}%>
 			</button>
 			<% end %>
 		<% end %>
 
-
+<div> </div>
 
 <div class="row">
 	<div class="col-md-12">
-		 <div class="reviews">
-		 	<h1>Comments</h1>
-		 		<div>
-		 			<%= link_to "Click to add Comment", new_album_photo_comment_path(@album, @photo), class: "btn btn-default" %>
-		 		</div>
-
-		 		<%= render @photo.comments %>
+		 
+		 	<h1>All Comments</h1>
 		 		
-		 </div>
+		 		<%= render @photo.comments %>
+		 	<div>
+		 	<%= link_to "Click to add a Comment", new_album_photo_comment_path(@album, @photo), class: "btn btn-default" %>
+		 	</div>
 	</div>
 </div>
