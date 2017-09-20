@@ -1,6 +1,6 @@
 <h1> <%= @photo.title %> </h1>
 
-<p><%= image_tag(@photo.avatar.thumb.url, alt: 'Image', class: "photo") if @photo.avatar? %></p>
+<p><%= image_tag(@photo.avatar.thumb.url, alt: 'Image', class: "photo-show") if @photo.avatar? %></p>
 <p> <%= @photo.description %></p>
 
 <br><br>
