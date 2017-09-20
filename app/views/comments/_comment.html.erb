@@ -1,0 +1,14 @@
+<div class="comment">
+	<h3> <em>Commented by: <%= comment.user.email %> </em></h3>
+	<p class="comment-2"><%= comment.body %></p>
+
+	<% if user_signed_in? %>
+		<% if comment.user_id == current_user.id %>
+			<div class="links btn-group">
+				<%= link_to "Edit", edit_album_photo_comment_path(comment.photo.album, comment.photo, comment), class: 'btn btn-success' %>
+				<%= link_to "Delete", album_photo_comment_path(comment.photo.album, comment.photo, comment), method: :delete, data: {confirm: "Are you sure?" }, class: 'btn btn-danger' %>
+			</div>
+			<br>
+		<% end %>
+	<% end %>
+</div>

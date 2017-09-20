@@ -1,18 +1,37 @@
 <h1> <%= @photo.title %> </h1>
 
+<p><%= image_tag(@photo.avatar.thumb.url, alt: 'Image', class: "photo") if @photo.avatar? %></p>
 <p> <%= @photo.description %></p>
 
-<%= image_tag @photo.avatar.url%>
-<br>
-<br>
+<br><br>
+
+		<button type="button" class="btn btn-info ">
+			<%= link_to "Back", root_path %>
+		</button>
 
 
+		<% if user_signed_in? %> 
+			<% if @album.user_id == current_user.id %> 
+			<button type="button" class="btn btn-warning">
+				<%= link_to "Edit", edit_album_photo_path(album_id: @album.id, id: @photo.id) %>
+			</button>
+			<button type="button" class="btn btn-warning">
+				<%= link_to "Delete", album_photo_path(album_id: @album.id, id: @photo.id), method: :delete,
+				data: {confirm: "Are you sure?"}%>
+			</button>
+			<% end %>
+		<% end %>
 
-<%= link_to "Back", root_path %>
-<%= link_to "Edit", edit_album_photo_path(album_id: @album.id, id: @photo.id) %>
-<%= link_to "Delete", album_photo_path(:album_id), method: :delete,
-	data: {confirm: "Are you sure?"}%>
+<div> </div>
 
-
-
-
+<div class="row">
+	<div class="col-md-12">
+		 
+		 	<h1>All Comments</h1>
+		 		
+		 		<%= render @photo.comments %>
+		 	<div>
+		 	<%= link_to "Click to add a Comment", new_album_photo_comment_path(@album, @photo), class: "btn btn-default" %>
+		 	</div>
+	</div>
+</div>

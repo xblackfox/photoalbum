@@ -6,6 +6,9 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.3.2/css/mdb.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.3.2/js/mdb.min.js">
+
   </head>
 
 
@@ -15,18 +18,18 @@
    <div class="nav navbar navbar-inverse">
       <div class="container">
         <div class="navbar-brand"> 
-          <%= link_to "Photo Album Application", root_path %> 
+          <%= link_to "Albums", root_path %> 
          </div>
 
             <% if user_signed_in? %>
-            <ul class="nav navbar-nav navbar-left">
+            <ul class="nav navbar-nav navbar-right">
               <li><%= link_to "Add a new album", new_album_path %></li>
               <li><%= link_to "Settings", edit_user_registration_path %></li>
               <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
             </ul>
 
             <% else %>
-            <ul class="nav navbar-nav navbar-left">
+            <ul class="nav navbar-nav navbar-right">
               <li><%= link_to "Join", new_user_registration_path %></li>
               <li><%= link_to "Log In", new_user_session_path %></li>            
             </ul>
@@ -37,14 +40,14 @@
 <!-- navbar end --> 
 
 
-
+<div class="container">
 <!-- flash start --> 
   	<% flash.each do |name, msg| %>
   		<%= content_tag :div, msg, class: "alert alert-info"%>
   	 <% end %>
 <!-- flash end --> 
 
-    <div class="container">
+
 <!-- yield start --> 
     <%= yield %>
 <!-- yield start --> 

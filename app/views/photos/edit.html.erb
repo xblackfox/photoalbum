@@ -2,13 +2,13 @@
 	<div class="row">
 		<div class="panel panel-default">
 			<div class="panel-heading">
-				<h1>Edit Photo Post</h1>
+				<h1>Edit Photo</h1>
 			</div>
 
 			<div class="panel-body">
 			 <div class="current_image">
 				<strong class="center">Right now</strong><br>
-					<%= image_tag @photo.avatar.url %>
+					<%= link_to(image_tag(@photo.avatar.thumb.url, alt: 'Image', class: "photo"), @photo.avatar.url, target: '_blank') if @photo.avatar? %>
 			</div>
 
 			<!-- form start -->	
@@ -40,12 +40,12 @@
 
 
 					<%= f.button :submit, class: "btn btn-info" %>
+					<%= link_to "Cancel", album_photo_path(album_id: @album.id, id: @photo.id), class: "btn btn-warning" %> 
 
 				<% end %>
 			<!-- form end -->	
 
 
-				<%= link_to "Cancel", album_photo_path(:album_id) %> 
 			</div>
 
 			

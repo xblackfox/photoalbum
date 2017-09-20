@@ -10,14 +10,14 @@ before_action :find_album, only: [:show, :edit, :update, :destroy]
 	end
 
 	def new
-		@album = Album.new
+		@album = current_user.albums.new
 	end
 
 	def create
-		@album = Album.new(album_params)
+		@album = current_user.albums.new(album_params)
 		@album.user_id = current_user.id
 		if @album.save
-			redirect_to @album, notice: "Succesfully posted."
+			redirect_to @album, notice: "Succesfully created."
 		else
 			render 'new'
 		end
