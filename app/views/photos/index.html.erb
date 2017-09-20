@@ -1,11 +1,19 @@
 <h1> <%= @album.title %> Album</h1>
+	
+<% @photos.each_slice(3) do |photos| %>
 	<div class="row">
-		<% @photos.each do |photo| %>
-			<div class="col-md-4 col-sm-6">
+		<% photos.each do |photo| %>
+			<div class="col-md-4">
 				<%= link_to image_tag(photo.avatar.thumb.url, alt:'Photo', class: "photo"), album_photo_path(album_id: @album.id, id: photo.id) if photo.avatar? %>
 			</div>
 		<% end %>	
 	</div>	
+<% end %>
+
+
+	
+ 
+
 		
 
 
